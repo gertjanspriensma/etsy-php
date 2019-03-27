@@ -100,7 +100,7 @@ class RequestValidator
 							} else {
 								$item_type = self::transformValueType(@gettype($arg[0]));
 								if($item_type == 'string' && preg_match("/^[\s0-9,]+$/", $arg[0])) {  //is comma separated integer string
-                                    $item_type = 'int';
+                                    //$item_type = 'int';
 								}
 								$type = 'array('.$item_type.')';
 							}
