@@ -53,19 +53,16 @@ class EtsyClient
                 }
             }
         }
-	    try {
-	    	if ($this->debug === true)
-	        {
-	        	$this->oauth->enableDebug();
-	        }
+		if ($this->debug === true)
+		{
+			$this->oauth->enableDebug();
+		}
 
-	        $data = $this->oauth->fetch($this->base_url . $this->base_path . $path, $params, $method);
-	        $response = $this->oauth->getLastResponse();
+		$data = $this->oauth->fetch($this->base_url . $this->base_path . $path, $params, $method);
+		$response = $this->oauth->getLastResponse();
 
-	        return json_decode($response, !$json);
-	    } catch (\OAuthException $e) {
-	        throw new EtsyRequestException($e, $this->oauth, $params);
-	    }
+		return json_decode($response, !$json);
+
 	}
 
 	public function getRequestToken(array $extra = array())
