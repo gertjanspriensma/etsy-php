@@ -78,22 +78,22 @@ class EtsyClient
 	    {
 	    	$callback = $extra['callback'];
 	    }
-	    try {
+	    //try {
 		return $this->oauth->getRequestToken($url, $callback, 'GET');
-	    } catch (\OAuthException $e) {
-	        throw new EtsyRequestException($e, $this->oauth);
-	    }
+	    //} catch (\OAuthException $e) {
+	    //    throw new EtsyRequestException($e, $this->oauth);
+	    //}
 
 	    return null;
 	}
 
 	public function getAccessToken($verifier)
 	{
-	    try {
+	    //try {
 			return $this->oauth->getAccessToken($this->base_url . "/oauth/access_token", null, $verifier, 'GET');
-	    } catch (\OAuthException $e) {
-	        throw new EtsyRequestException($e, $this->oauth);
-	    }
+	    //} catch (\OAuthException $e) {
+	    //    throw new EtsyRequestException($e, $this->oauth);
+	    //}
 
 	    return null;
 	}
