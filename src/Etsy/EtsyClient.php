@@ -57,9 +57,13 @@ class EtsyClient
 		{
 			$this->oauth->enableDebug();
 		}
-
-		$data = $this->oauth->fetch($this->base_url . $this->base_path . $path, $params, $method);
-		$response = $this->oauth->getLastResponse();
+		
+		try {
+			$data = $this->oauth->fetch($this->base_url . $this->base_path . $path, $params, $method);
+			$response = $this->oauth->getLastResponse();
+		} catch  (\OAuthException $e) {
+			throw new \Exception($this->oauth->getLastResponseHeaders());
+		}
 
 		return json_decode($response, !$json);
 
